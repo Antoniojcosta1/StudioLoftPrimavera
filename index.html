@@ -1,0 +1,2161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Loft Primavera — Sua casa fora de casa</title>
+  <meta name="description" content="Studios e lofts mobiliados em Primavera do Leste, MT. Aluguel mensal ou por temporada, sem burocracia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* =====================
+       RESET & BASE
+    ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #FAF8F5; color: #1A0808; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* =====================
+       VARIÁVEIS
+    ===================== */
+    :root {
+      --maroon:       #3D0B0B;
+      --maroon-deep:  #280707;
+      --copper:       #C07840;
+      --copper-light: #D4924E;
+      --white:        #FFFFFF;
+      --off-white:    #FAF8F5;
+      --gray-light:   #F2ECE6;
+      --text:         #1A0808;
+      --text-muted:   #6B5550;
+      --green-wa:     #25D366;
+      --green-wa-hov: #1da851;
+      --radius-card:  16px;
+      --shadow-card:  0 4px 24px rgba(61,11,11,0.10);
+    }
+
+    h1,h2,h3 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.15; }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--copper); margin-bottom: 10px;
+    }
+
+    /* =====================
+       NAVBAR
+    ===================== */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(40,7,7,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(192,120,64,0.18);
+      height: 76px;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-icon {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, var(--copper-light), var(--copper));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-icon svg { width: 18px; height: 18px; }
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px; font-weight: 600; color: var(--white);
+      line-height: 1;
+    }
+    .nav-sub {
+      font-size: 9px; font-weight: 400; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--copper);
+      display: block; margin-top: 2px;
+    }
+
+    .nav-links { display: none; align-items: center; gap: 28px; }
+    .nav-link {
+      color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 500;
+      transition: color 0.2s; padding: 4px 0; white-space: nowrap; text-decoration: none;
+    }
+    .nav-link:active { color: var(--copper-light); }
+
+    .nav-cta { display: none; }
+    .nav-logo-img { height: 56px; width: auto; border-radius: 8px; display: block; }
+
+    .nav-info-btn {
+      display: flex; align-items: center;
+      border: 1px solid rgba(192,120,64,0.55); color: var(--copper-light);
+      padding: 9px 15px; border-radius: 8px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.2px;
+      white-space: nowrap; transition: background 0.2s, border-color 0.2s;
+    }
+    .nav-info-btn:active { background: rgba(192,120,64,0.15); }
+
+    /* =====================
+       BOTTOM NAV (mobile)
+    ===================== */
+    body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+
+    .mobile-nav {
+      display: flex;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      z-index: 300;
+      background: rgba(28,5,5,0.98);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(192,120,64,0.2);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    .mob-nav-item {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 3px; padding: 10px 2px;
+      color: rgba(255,255,255,0.38);
+      font-size: 9px; font-weight: 600;
+      letter-spacing: 0.4px; text-transform: uppercase;
+      transition: color 0.2s; text-align: center;
+    }
+    .mob-nav-item svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .mob-nav-item.active { color: var(--copper-light); }
+    .mob-nav-item.active svg { stroke: var(--copper-light); }
+
+    /* =====================
+       UNIT SECTIONS
+    ===================== */
+    .unit-section { padding: 60px 0 72px; background: var(--off-white); }
+    .unit-section.unit-section--alt { background: var(--gray-light); }
+    .unit-section .unit-row { margin-bottom: 0; }
+
+    /* =====================
+       RESERVAR
+    ===================== */
+    .reservar { padding: 72px 0 80px; background: var(--maroon); }
+    .reservar-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    .reservar-header { text-align: center; margin-bottom: 40px; }
+    .reservar-header .units-tag { color: rgba(192,120,64,0.85); }
+    .reservar-header h2 { font-size: 34px; color: var(--white); margin-bottom: 0; }
+
+    .res-tabs {
+      display: flex; gap: 0; margin-bottom: 36px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 10px; padding: 4px; overflow-x: auto;
+    }
+    .res-tab {
+      flex: 1; padding: 12px 14px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.3px;
+      color: rgba(255,255,255,0.5); border-radius: 8px;
+      transition: background 0.2s, color 0.2s; white-space: nowrap;
+      min-width: 0;
+    }
+    .res-tab.active { background: var(--copper); color: white; }
+
+    .res-panel { display: none; }
+    .res-panel.active { display: block; }
+
+    .res-price-row {
+      display: flex; align-items: flex-end; gap: 8px;
+      margin-bottom: 28px; padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .res-price-val { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 600; color: white; line-height: 1; }
+    .res-price-per { font-size: 13px; color: rgba(255,255,255,0.45); padding-bottom: 4px; }
+
+    .res-form-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;
+    }
+    .res-form-field { display: flex; flex-direction: column; gap: 6px; }
+    .res-form-field label {
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,0.45);
+    }
+    .res-form-field input, .res-form-field select {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px; padding: 13px 14px;
+      color: white; font-size: 14px; font-family: inherit;
+      outline: none; appearance: none; -webkit-appearance: none;
+    }
+    .res-form-field input:focus, .res-form-field select:focus {
+      border-color: var(--copper); background: rgba(255,255,255,0.12);
+    }
+    .res-guests { grid-column: 1 / -1; }
+
+    .res-btns { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+    .res-btn-wa {
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      background: var(--green-wa); color: white;
+      padding: 16px 20px; border-radius: 9px;
+      font-size: 14px; font-weight: 700; transition: background 0.2s; width: 100%;
+    }
+    .res-btn-wa:active { background: var(--green-wa-hov); }
+    .res-btn-wa svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .res-btn-airbnb {
+      display: flex; align-items: center; justify-content: center; gap: 11px;
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.3); color: white;
+      padding: 13px 20px; border-radius: 9px;
+      font-size: 13px; font-weight: 600;
+      width: 100%; transition: background 0.2s, border-color 0.2s;
+    }
+    .res-btn-airbnb:active { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.5); }
+    .airbnb-belo { height: 22px; width: auto; max-width: 80px; flex-shrink: 0; object-fit: contain; }
+    .airbnb-btn-txt { display: flex; flex-direction: column; gap: 2px; align-items: flex-start; line-height: 1.2; }
+    .superhost-label { font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.55); letter-spacing: 0.3px; }
+
+    /* ===== ALUGUEL MENSAL ===== */
+    .res-or-divider {
+      display: flex; align-items: center; gap: 12px; margin: 22px 0 18px;
+    }
+    .res-or-divider::before, .res-or-divider::after {
+      content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1);
+    }
+    .res-or-divider span {
+      font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.25);
+      text-transform: uppercase; letter-spacing: 1.5px;
+    }
+    .res-monthly {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 18px;
+    }
+    .res-monthly-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 6px;
+    }
+    .res-monthly-price {
+      font-family: 'Playfair Display', serif; font-size: 30px;
+      font-weight: 600; color: white; margin-bottom: 14px; line-height: 1;
+    }
+    .res-monthly-price span { font-size: 13px; font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.45); font-weight: 400; }
+    .res-btn-monthly {
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      background: rgba(37,211,102,0.12); border: 1px solid rgba(37,211,102,0.35);
+      color: #4ade80; padding: 13px 16px; border-radius: 9px;
+      font-size: 13px; font-weight: 700; width: 100%; transition: background 0.2s;
+    }
+    .res-btn-monthly:active { background: rgba(37,211,102,0.22); }
+    .res-btn-monthly svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* =====================
+       HERO — mobile first
+    ===================== */
+    .hero {
+      min-height: 92vh;
+      padding: 120px 24px 72px;
+      text-align: center;
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-bg {
+      position: absolute;
+      top: -22%; left: 0; right: 0;
+      height: 144%;
+      background: url('fotos/imagem-banner.jpeg') center/cover no-repeat;
+      will-change: transform;
+      z-index: 0;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(
+        160deg,
+        rgba(28,5,5,0.74) 0%,
+        rgba(40,7,7,0.60) 50%,
+        rgba(28,5,5,0.82) 100%
+      );
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 2; max-width: 520px; margin: 0 auto; }
+
+    .hero-logo-wrap {
+      width: 108px; height: 108px;
+      border-radius: 50%; overflow: hidden;
+      margin: 0 auto 24px;
+      border: 2.5px solid rgba(192,120,64,0.55);
+      box-shadow: 0 0 0 6px rgba(192,120,64,0.10), 0 8px 32px rgba(0,0,0,0.45);
+    }
+    .hero-logo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .hero h1 {
+      font-size: 38px; color: var(--white);
+      margin-bottom: 16px; line-height: 1.1;
+    }
+    .hero h1 em { font-style: italic; color: var(--copper-light); }
+    .hero-sub {
+      font-size: 16px; color: rgba(255,255,255,0.72);
+      line-height: 1.7; margin-bottom: 32px;
+    }
+
+    .hero-btns {
+      display: flex; flex-direction: column; gap: 12px;
+      margin-bottom: 40px;
+    }
+    .btn-wa-hero {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--green-wa); color: var(--white);
+      padding: 16px 24px; border-radius: 10px;
+      font-size: 16px; font-weight: 700;
+      transition: background 0.2s;
+    }
+    .btn-wa-hero:active { background: var(--green-wa-hov); }
+    .btn-wa-hero svg { width: 20px; height: 20px; }
+
+    .btn-scroll {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      border: 1.5px solid rgba(255,255,255,0.3); color: var(--white);
+      padding: 15px 24px; border-radius: 10px;
+      font-size: 15px; font-weight: 500;
+      transition: border-color 0.2s;
+    }
+    .btn-scroll:active { border-color: var(--copper-light); color: var(--copper-light); }
+
+    .hero-stats {
+      display: flex; justify-content: center; gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 32px;
+    }
+    .hero-stat {
+      flex: 1; text-align: center;
+      padding: 0 12px;
+      border-right: 1px solid rgba(255,255,255,0.12);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 600; color: var(--copper-light);
+      display: block; line-height: 1.2;
+    }
+    .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px; letter-spacing: 0.3px; }
+
+    /* =====================
+       NOSSAS UNIDADES
+    ===================== */
+    .units { padding: 64px 0 44px; background: var(--off-white); }
+    .units-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Cabeçalho da seção */
+    .units-header { display: flex; flex-direction: column; gap: 28px; margin-bottom: 28px; }
+    .units-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--copper); display: block; margin-bottom: 10px;
+    }
+    .units-header h2 { font-size: 36px; color: var(--maroon); line-height: 1.1; }
+    .heading-rule {
+      width: 44px; height: 2px; background: var(--copper);
+      border-radius: 2px; margin: 14px 0;
+    }
+    .units-header-desc { font-size: 16px; color: var(--text-muted); line-height: 1.7; }
+    .btn-avail {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--maroon); color: white;
+      padding: 15px 26px; border-radius: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1.8px;
+      text-transform: uppercase; white-space: nowrap;
+      transition: background 0.2s; align-self: flex-start;
+    }
+    .btn-avail:active { background: var(--maroon-deep); }
+
+    /* Linha de unidade */
+    .unit-row {
+      display: flex; flex-direction: column;
+      background: var(--white);
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 12px 40px rgba(61,11,11,0.08);
+      border: 1px solid rgba(192,120,64,0.1);
+      margin-bottom: 40px;
+    }
+    .unit-row:last-child { margin-bottom: 0; }
+
+    /* ---- CARROSSEL ---- */
+    .carousel { position: relative; overflow: hidden; }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.38s cubic-bezier(0.25,0.46,0.45,0.94);
+      will-change: transform;
+    }
+    .carousel-track img {
+      min-width: 100%; width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      pointer-events: none; user-select: none;
+    }
+
+    /* setas */
+    .carr-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(0,0,0,0.42); color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; line-height: 1; z-index: 10;
+      transition: background 0.2s; padding: 0;
+    }
+    .carr-btn:active { background: rgba(0,0,0,0.7); }
+    .carr-prev { left: 10px; }
+    .carr-next { right: 10px; }
+
+    /* bolinhas */
+    .carr-dots {
+      position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 6px; z-index: 10;
+    }
+    .cdot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(255,255,255,0.45);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cdot.active { background: white; transform: scale(1.2); }
+
+    /* ---- CONTEÚDO ---- */
+    .unit-content-col { padding: 28px 22px 30px; }
+
+    .unit-badge {
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--copper);
+      display: block; margin-bottom: 10px;
+    }
+    .unit-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; color: var(--maroon);
+      line-height: 1.15; margin-bottom: 6px;
+    }
+    .unit-addr { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5; }
+    .unit-desc { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin-bottom: 18px; }
+
+    .unit-features {
+      list-style: none; padding: 0; margin: 0 0 20px;
+      display: flex; flex-direction: column; gap: 7px;
+      padding-bottom: 18px; border-bottom: 1px solid var(--gray-light);
+    }
+    .unit-features li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: var(--text); line-height: 1.4;
+    }
+    .unit-features li::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--copper); flex-shrink: 0; margin-top: 5px;
+    }
+
+    .unit-price-row { display: flex; align-items: flex-end; margin-bottom: 16px; }
+    .price-from { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+    .price-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px; font-weight: 600; color: var(--maroon); line-height: 1;
+    }
+    .price-period { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+    .unit-btns { display: flex; flex-direction: column; gap: 10px; }
+
+    .btn-map {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      border: 1.5px solid var(--copper); color: var(--copper);
+      padding: 14px 20px; border-radius: 9px;
+      font-size: 14px; font-weight: 600;
+      transition: background 0.2s, color 0.2s; width: 100%;
+    }
+    .btn-map:active { background: var(--copper); color: white; }
+    .btn-map svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    .btn-reserve {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--maroon); color: white;
+      border: 1.5px solid var(--maroon);
+      padding: 14px 20px; border-radius: 9px;
+      font-size: 14px; font-weight: 600; width: 100%;
+      transition: background 0.2s, border-color 0.2s; cursor: pointer;
+    }
+    .btn-reserve:active { background: var(--maroon-deep); }
+    .btn-reserve svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    .btn-wa {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--green-wa); color: white;
+      padding: 14px 20px; border-radius: 9px;
+      font-size: 14px; font-weight: 700;
+      transition: background 0.2s; width: 100%;
+    }
+    .btn-wa:active { background: var(--green-wa-hov); }
+    .btn-wa svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* =====================
+       O QUE ESTÁ INCLUSO
+    ===================== */
+    .incluso { padding: 56px 0 64px; background: var(--maroon); }
+    .incluso-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .incluso-header { text-align: center; margin-bottom: 36px; }
+    .incluso-header h2 { font-size: 30px; color: var(--white); margin-bottom: 10px; }
+    .incluso-header p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+    .incluso-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .incluso-item {
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(192,120,64,0.2);
+      border-radius: 16px;
+      padding: 18px 16px 16px;
+      display: flex; flex-direction: column; gap: 10px;
+      transition: transform 0.23s ease, box-shadow 0.23s ease,
+                  border-color 0.23s ease, background 0.23s ease;
+      cursor: default;
+    }
+    .incluso-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.45);
+      border-color: rgba(192,120,64,0.55);
+      background: rgba(255,255,255,0.09);
+    }
+    .incluso-item:active {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+      border-color: rgba(192,120,64,0.4);
+    }
+    .incluso-item-top {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .incluso-num { display: none; }
+    .incluso-icon {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: rgba(192,120,64,0.14);
+      border: 1px solid rgba(192,120,64,0.28);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--copper-light);
+      transition: background 0.23s ease;
+    }
+    .incluso-item:hover .incluso-icon { background: rgba(192,120,64,0.28); }
+    .incluso-icon svg {
+      width: 21px; height: 21px;
+      stroke: currentColor; fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .incluso-item strong { font-size: 13.5px; color: white; display: block; font-weight: 600; line-height: 1.35; }
+    .incluso-item span { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+    /* =====================
+       CTA FINAL
+    ===================== */
+    .cta-section {
+      padding: 64px 24px;
+      background: var(--off-white);
+      text-align: center;
+    }
+    .cta-inner { max-width: 480px; margin: 0 auto; }
+    .cta-section h2 { font-size: 30px; color: var(--maroon); margin-bottom: 14px; }
+    .cta-section p { font-size: 16px; color: var(--text-muted); line-height: 1.7; margin-bottom: 32px; }
+    .btn-wa-lg {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--green-wa); color: white;
+      padding: 18px 28px; border-radius: 12px;
+      font-size: 17px; font-weight: 700;
+      transition: background 0.2s;
+      width: 100%; margin-bottom: 16px;
+    }
+    .btn-wa-lg:active { background: var(--green-wa-hov); }
+    .btn-wa-lg svg { width: 22px; height: 22px; }
+
+    .btn-instagram {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+      color: white;
+      padding: 18px 28px; border-radius: 12px;
+      font-size: 16px; font-weight: 700;
+      width: 100%;
+      transition: opacity 0.2s;
+    }
+    .btn-instagram:active { opacity: 0.85; }
+    .btn-instagram svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+    /* =====================
+       REVIEWS
+    ===================== */
+    .reviews {
+      background: var(--gray-light);
+      padding: 72px 20px;
+    }
+    .reviews-inner { max-width: 1100px; margin: 0 auto; }
+    .reviews-top { margin-bottom: 32px; }
+    .reviews-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--copper);
+      margin-bottom: 14px;
+    }
+    .reviews-tag::before { content: ''; display: block; width: 28px; height: 1.5px; background: var(--copper); }
+    .reviews-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px; font-weight: 700;
+      color: var(--maroon); line-height: 1.2; margin-bottom: 20px;
+    }
+    .reviews-title em { color: var(--copper); font-style: normal; }
+    .reviews-summary {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px;
+      background: white; border-radius: 12px;
+      padding: 12px 16px;
+      box-shadow: 0 2px 12px rgba(61,11,11,0.08);
+      border: 1px solid rgba(61,11,11,0.06);
+    }
+    .reviews-summary-g { width: 26px; height: 26px; flex-shrink: 0; }
+    .reviews-summary-score {
+      font-size: 22px; font-weight: 700;
+      color: var(--maroon); font-family: 'Playfair Display', serif;
+      line-height: 1;
+    }
+    .reviews-summary-stars { display: flex; gap: 2px; }
+    .reviews-summary-star { color: #FBBC04; font-size: 15px; line-height: 1; }
+    .reviews-summary-meta { font-size: 11px; color: #888; }
+    .reviews-summary-verified {
+      display: flex; align-items: center; gap: 4px;
+      font-size: 11px; font-weight: 600; color: #1a73e8;
+    }
+    .reviews-cta-wrap {
+      margin-top: 24px; display: flex; justify-content: center;
+    }
+    .btn-review-google {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: white; border: 1.5px solid rgba(61,11,11,0.12);
+      color: var(--maroon); font-size: 14px; font-weight: 700;
+      padding: 14px 28px; border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(61,11,11,0.08);
+      transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+      text-decoration: none; white-space: nowrap;
+    }
+    .btn-review-google svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .btn-review-google:active { transform: scale(0.97); }
+
+    .reviews-grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 14px; margin-top: 28px;
+    }
+    .review-card {
+      background: white; border-radius: 14px; padding: 20px;
+      box-shadow: 0 2px 14px rgba(61,11,11,0.07);
+      border: 1px solid rgba(61,11,11,0.05);
+      display: flex; flex-direction: column; gap: 12px;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .review-top {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 8px;
+    }
+    .review-user { display: flex; align-items: center; gap: 10px; }
+    .review-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 700; color: white; flex-shrink: 0;
+    }
+    .review-name { font-size: 13px; font-weight: 700; color: var(--maroon); line-height: 1.3; }
+    .review-user-meta { font-size: 10px; color: #999; margin-top: 1px; }
+    .review-glogo { width: 24px; height: 24px; flex-shrink: 0; }
+    .review-rating { display: flex; align-items: center; gap: 8px; }
+    .review-stars { display: flex; gap: 2px; }
+    .review-star { color: #FBBC04; font-size: 13px; line-height: 1; }
+    .review-date { font-size: 11px; color: #aaa; }
+    .review-text {
+      font-size: 13px; line-height: 1.65; color: #555; flex: 1;
+    }
+    .review-footer {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    .review-verified {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.6px;
+      text-transform: uppercase; color: #1a73e8;
+    }
+    .review-google-link {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 600; color: #888;
+      text-decoration: none; transition: color 0.2s; white-space: nowrap;
+    }
+    .review-google-link:hover { color: var(--copper); }
+    .review-google-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    @media (min-width: 640px) {
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+      .prop-maps-grid { grid-template-columns: 1fr 1fr; }
+      .prop-map-frame-wrap { height: 300px; }
+    }
+
+    /* =====================
+       FOOTER
+    ===================== */
+    footer {
+      background: var(--maroon-deep);
+      padding: 32px 24px;
+      border-top: 1px solid rgba(192,120,64,0.15);
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .footer-brand { font-family: 'Playfair Display', serif; font-size: 16px; color: white; margin-bottom: 4px; }
+    .footer-slogan { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
+    .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .footer-links a:active { color: var(--copper-light); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+    /* =====================
+       WHATSAPP FLUTUANTE
+    ===================== */
+    .wa-float {
+      position: fixed; bottom: calc(64px + env(safe-area-inset-bottom, 0px) + 14px); right: 20px; z-index: 299;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--green-wa);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      transition: transform 0.2s;
+    }
+    .wa-float:active { transform: scale(0.93); }
+    .wa-float svg { width: 28px; height: 28px; fill: white; }
+
+    /* =====================
+       EXPAND + COUNTER
+    ===================== */
+    .carr-expand {
+      position: absolute;
+      top: 10px; left: 10px; z-index: 5;
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.52);
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: white;
+      backdrop-filter: blur(4px);
+    }
+    .carr-expand svg { width: 16px; height: 16px; }
+    .carr-counter {
+      position: absolute;
+      top: 10px; right: 10px; z-index: 5;
+      background: rgba(0,0,0,0.52);
+      color: white;
+      font-size: 13px; font-weight: 600;
+      padding: 5px 12px; border-radius: 20px;
+      font-family: 'Inter', sans-serif;
+      backdrop-filter: blur(4px);
+      letter-spacing: 0.3px;
+    }
+
+    /* =====================
+       LIGHTBOX
+    ===================== */
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.96);
+      align-items: center; justify-content: center;
+      flex-direction: column;
+    }
+    .lightbox.open { display: flex; }
+    .lb-img {
+      max-width: 94vw; max-height: 80vh;
+      object-fit: contain; border-radius: 6px;
+      pointer-events: none; user-select: none;
+    }
+    .lb-close {
+      position: absolute; top: 14px; right: 18px;
+      background: rgba(255,255,255,0.12); border: none;
+      color: white; width: 40px; height: 40px;
+      border-radius: 50%; font-size: 22px;
+      cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+    }
+    .lb-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.13); border: none;
+      color: white; width: 44px; height: 44px;
+      border-radius: 50%; font-size: 26px;
+      cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+    }
+    .lb-arrow.lb-prev { left: 12px; }
+    .lb-arrow.lb-next { right: 12px; }
+    .lb-count {
+      position: absolute; bottom: 22px; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.55);
+      font-size: 14px; font-family: 'Inter', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    /* =====================
+       BOOKING FORM
+    ===================== */
+    .booking-divider {
+      border: none;
+      border-top: 1px solid rgba(192,120,64,0.2);
+      margin: 24px 0 20px;
+    }
+    .booking-section-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 14px;
+    }
+    .booking-dates {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .form-field { display: flex; flex-direction: column; }
+    .form-field label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .form-field input[type="date"] {
+      padding: 11px 10px;
+      border: 1.5px solid rgba(192,120,64,0.25);
+      border-radius: 9px;
+      font-size: 13px;
+      color: var(--text);
+      background: var(--off-white);
+      font-family: 'Inter', sans-serif;
+      width: 100%;
+    }
+    .form-field input[type="date"]:focus { outline: none; border-color: var(--copper); }
+    .guests-field { margin-bottom: 14px; }
+    .guests-field label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .guests-field select {
+      padding: 11px 14px;
+      border: 1.5px solid rgba(192,120,64,0.25);
+      border-radius: 9px;
+      font-size: 14px;
+      color: var(--text);
+      background: var(--off-white);
+      font-family: 'Inter', sans-serif;
+      width: 100%;
+    }
+    .guests-field select:focus { outline: none; border-color: var(--copper); }
+    .btn-wa-booking {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--green-wa);
+      color: white;
+      padding: 14px 20px;
+      border-radius: 9px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      width: 100%;
+      margin-bottom: 10px;
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-wa-booking:active { background: var(--green-wa-hov); }
+    .btn-wa-booking svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn-airbnb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1.5px solid #FF385C;
+      color: #FF385C;
+      padding: 14px 20px;
+      border-radius: 9px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      width: 100%;
+      background: transparent;
+    }
+    .btn-airbnb:active { background: #FF385C; color: white; }
+    .btn-airbnb svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .airbnb-brand { font-style: italic; text-transform: none; font-weight: 700; letter-spacing: 0; }
+
+    /* =====================
+       ONDE FICAMOS
+    ===================== */
+    .localizacao { padding: 72px 0 80px; background: #F2ECE6; }
+    .localizacao-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    .localizacao-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--copper); display: block; margin-bottom: 12px;
+    }
+    .localizacao-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px; color: var(--maroon); line-height: 1.15; margin-bottom: 12px;
+    }
+    .localizacao-desc { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 36px; }
+
+    /* ===== PropertyLocationMap component ===== */
+    .prop-maps-grid {
+      display: grid; grid-template-columns: 1fr; gap: 20px;
+    }
+    .prop-map-card {
+      background: white; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(61,11,11,0.09);
+      border: 1px solid rgba(61,11,11,0.06);
+      transition: box-shadow 0.25s;
+    }
+    .prop-map-info {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 12px;
+      padding: 14px 16px;
+    }
+    .prop-map-texts { min-width: 0; }
+    .prop-map-name {
+      font-size: 13px; font-weight: 700; color: var(--maroon); display: block; line-height: 1.3;
+    }
+    .prop-map-addr {
+      font-size: 11px; color: var(--text-muted); margin-top: 2px; display: block; line-height: 1.4;
+    }
+    .prop-map-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--maroon); color: white;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.2px;
+      padding: 8px 13px; border-radius: 8px;
+      white-space: nowrap; text-decoration: none;
+      transition: background 0.2s; flex-shrink: 0;
+    }
+    .prop-map-btn:active { background: var(--maroon-deep); }
+    .prop-map-btn svg { width: 12px; height: 12px; flex-shrink: 0; }
+    .prop-map-frame-wrap { width: 100%; height: 280px; }
+    .prop-map-iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* =====================
+       SCROLL REVEAL
+    ===================== */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.68s ease, transform 0.68s ease;
+    }
+    [data-reveal].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    [data-reveal="d1"] { transition-delay: 0.10s; }
+    [data-reveal="d2"] { transition-delay: 0.20s; }
+    [data-reveal="d3"] { transition-delay: 0.30s; }
+
+    /* =====================
+       TABLET  ≥ 640px
+    ===================== */
+    @media (min-width: 640px) {
+      .hero h1 { font-size: 48px; }
+      .hero-stat-val { font-size: 22px; }
+      .hero-btns { flex-direction: row; justify-content: center; }
+      .btn-wa-hero, .btn-scroll { width: auto; }
+      .incluso-grid { grid-template-columns: repeat(4, 1fr); }
+      .unit-btns { flex-direction: row; }
+      .btn-map, .btn-wa, .btn-reserve { width: auto; flex: 1; }
+    }
+
+    /* =====================
+       DESKTOP  ≥ 1024px
+    ===================== */
+    @media (min-width: 1024px) {
+      nav { height: 76px; padding: 0 40px; }
+      .nav-name { font-size: 16px; }
+
+      .hero { padding: 88px 40px; }
+      .hero h1 { font-size: 60px; }
+      .hero-sub { font-size: 18px; }
+
+      .units { padding: 80px 0 48px; }
+      .units-inner { padding: 0 40px; }
+      .units-header { flex-direction: row; align-items: flex-start; justify-content: space-between; gap: 48px; margin-bottom: 32px; }
+      .units-header h2 { font-size: 44px; }
+      .unit-row { flex-direction: row; }
+      .unit-row.reverse { flex-direction: row-reverse; }
+      .unit-carousel-col { flex: 0 0 54%; display: flex; flex-direction: column; }
+      .unit-carousel-col .carousel { flex: 1; min-height: 500px; display: flex; flex-direction: column; }
+      .unit-carousel-col .carousel-track { flex: 1; }
+      .unit-carousel-col .carousel-track img { aspect-ratio: unset; height: 100%; min-width: 100%; }
+      .unit-content-col { padding: 44px 48px; }
+      .unit-btns { flex-direction: row; }
+      .btn-map, .btn-wa, .btn-reserve { flex: 1; }
+
+      body { padding-bottom: 0; }
+      .mobile-nav { display: none; }
+      .nav-brand { display: none; }
+      .nav-info-btn { display: none; }
+      .nav-links {
+        display: flex;
+        justify-content: center;
+        gap: 4px;
+        flex: 1;
+      }
+      .nav-link {
+        display: flex; flex-direction: column; align-items: center; gap: 3px;
+        color: rgba(255,255,255,0.55); font-size: 9px; font-weight: 600;
+        letter-spacing: 0.4px; text-transform: uppercase;
+        padding: 8px 18px; border-radius: 8px;
+        transition: color 0.2s, background 0.2s; text-decoration: none;
+      }
+      .nav-link svg { width: 20px; height: 20px; flex-shrink: 0; }
+      .nav-link:hover { color: var(--copper-light); background: rgba(192,120,64,0.09); }
+
+      .res-form-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .res-guests { grid-column: auto; }
+      .res-btns { flex-direction: row; }
+      .res-btn-wa, .res-btn-airbnb { flex: 1; }
+      .res-btn-wa:hover { background: var(--green-wa-hov); }
+      .res-btn-airbnb:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.5); }
+      .res-btn-monthly:hover { background: rgba(37,211,102,0.22); }
+      .res-tab:hover { color: rgba(255,255,255,0.8); }
+
+      .incluso-inner { padding: 0 40px; }
+      .incluso-header h2 { font-size: 40px; }
+      .incluso-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+      .incluso-item { padding: 22px 18px; }
+      .incluso-item strong { font-size: 14.5px; }
+      .incluso-item span { font-size: 13px; }
+
+      .localizacao { padding: 88px 0; }
+      .localizacao-inner { padding: 0 40px; }
+      .localizacao-header h2 { font-size: 44px; }
+      .prop-maps-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+      .prop-map-frame-wrap { height: 350px; }
+      .prop-map-card:hover { box-shadow: 0 10px 36px rgba(61,11,11,0.14); }
+      .prop-map-btn:hover { background: var(--maroon-deep); }
+
+
+      .btn-map:hover { background: var(--copper); color: white; }
+      .btn-reserve:hover { background: var(--maroon-deep); }
+      .btn-maps:hover { background: var(--maroon-deep); }
+      .loc-card:hover { background: rgba(192,120,64,0.16); border-color: rgba(192,120,64,0.40); }
+      .loc-card:hover .loc-card-arrow { opacity: 1; }
+      .btn-wa:hover { background: var(--green-wa-hov); }
+      .nav-cta:hover { background: var(--green-wa-hov); }
+      .btn-wa-lg:hover { background: var(--green-wa-hov); }
+      .btn-instagram:hover { opacity: 0.9; }
+
+      .wa-float { width: 60px; height: 60px; bottom: 32px; right: 32px; z-index: 999; }
+      .wa-float:hover { transform: scale(1.08); }
+
+      footer { padding: 40px; }
+
+      .reviews { padding: 96px 40px; }
+      .reviews-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 48px; margin-bottom: 40px; }
+      .reviews-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .reviews-title { font-size: 40px; }
+      .review-card:hover { box-shadow: 0 8px 32px rgba(61,11,11,0.13); transform: translateY(-2px); }
+      .btn-review-google:hover { box-shadow: 0 6px 20px rgba(61,11,11,0.14); border-color: var(--copper); transform: translateY(-1px); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- =====================
+     NAVBAR
+===================== -->
+<nav>
+  <div class="nav-brand">
+    <img src="fotos/logo-loft.jpg" alt="Studio Loft Primavera" class="nav-logo-img">
+  </div>
+  <div class="nav-links">
+    <a href="#loft-58" class="nav-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      Unidades
+    </a>
+    <a href="#incluso" class="nav-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="8" x2="12" y2="12"/>
+        <line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      Informações
+    </a>
+    <a href="#localizacao" class="nav-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+        <circle cx="12" cy="9" r="2.5"/>
+      </svg>
+      Localização
+    </a>
+    <a href="#reservar" class="nav-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      Reservar
+    </a>
+  </div>
+  <a href="#incluso" class="nav-info-btn">Informações</a>
+</nav>
+
+
+<!-- =====================
+     HERO
+===================== -->
+<section id="home" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-logo-wrap">
+      <img src="fotos/logo-loft.jpg" alt="Studio Loft Primavera">
+    </div>
+    <span class="tag">Primavera do Leste · MT</span>
+    <h1>Sua <em>casa</em><br>fora de casa.</h1>
+    <p class="hero-sub">Lofts mobiliados para aluguel mensal ou por temporada. Chegou com a mala — é só se instalar.</p>
+
+    <div class="hero-btns">
+      <a href="https://wa.me/5566996358412?text=Olá!%20Vi%20o%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20lofts." target="_blank" rel="noopener" class="btn-wa-hero">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.845L0 24l6.302-1.513A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 01-5.002-1.372l-.357-.213-3.742.897.939-3.635-.233-.374A9.773 9.773 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+        Falar no WhatsApp
+      </a>
+      <a href="#lofts" class="btn-scroll">
+        Ver os lofts ↓
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-val">Localização</span>
+        <div class="hero-stat-label">Privilegiada</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-val">Sem Fiador</span>
+        <div class="hero-stat-label">Alugue sem burocracia</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-val">Mobiliado</span>
+        <div class="hero-stat-label">Pronto pra morar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================
+     NOSSAS UNIDADES
+===================== -->
+<section id="lofts" class="units">
+  <div class="units-inner">
+
+    <div class="units-header" data-reveal>
+      <div class="units-header-left">
+        <span class="units-tag">Acomodações</span>
+        <h2>Nossas unidades.</h2>
+        <div class="heading-rule"></div>
+        <p class="units-header-desc">Três lofts totalmente mobiliados em Primavera do Leste. Chegou com a mala — é só se instalar.</p>
+      </div>
+      <div class="units-header-right">
+        <a href="#loft-58" class="btn-avail">Ver acomodações</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================
+     LOFT 1 — Rua Jerusalém, 58
+===================== -->
+<section id="loft-58" class="unit-section">
+  <div class="units-inner">
+    <div class="unit-row" data-reveal>
+      <div class="unit-carousel-col">
+        <div class="carousel" id="c1">
+          <div class="carousel-track">
+            <img src="fotos/Loft%2058/01.jpeg" alt="Loft Rua Jerusalém 58 — foto 1">
+            <img src="fotos/Loft%2058/02.jpeg" alt="Loft Rua Jerusalém 58 — foto 2" loading="lazy">
+            <img src="fotos/Loft%2058/03.jpeg" alt="Loft Rua Jerusalém 58 — foto 3" loading="lazy">
+            <img src="fotos/Loft%2058/04.jpeg" alt="Loft Rua Jerusalém 58 — foto 4" loading="lazy">
+            <img src="fotos/Loft%2058/05.jpeg" alt="Loft Rua Jerusalém 58 — foto 5" loading="lazy">
+            <img src="fotos/Loft%2058/06.jpeg" alt="Loft Rua Jerusalém 58 — foto 6" loading="lazy">
+          </div>
+          <button class="carr-expand" aria-label="Ampliar foto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+          </button>
+          <div class="carr-counter"><span class="carr-cur">1</span> / <span class="carr-total"></span></div>
+          <button class="carr-btn carr-prev" aria-label="Anterior">&#8249;</button>
+          <button class="carr-btn carr-next" aria-label="Próxima">&#8250;</button>
+          <div class="carr-dots">
+            <span class="cdot active"></span><span class="cdot"></span><span class="cdot"></span><span class="cdot"></span><span class="cdot"></span><span class="cdot"></span>
+          </div>
+        </div>
+      </div><!-- /unit-carousel-col -->
+      <div class="unit-content-col">
+        <span class="unit-badge">Jardim Riva</span>
+        <h3 class="unit-heading">Loft · Rua Jerusalém, 58</h3>
+        <p class="unit-addr">Rua Jerusalém, 58 · Jardim Riva · Primavera do Leste, MT</p>
+        <p class="unit-desc">No coração do Jardim Riva, a uma quadra da Faculdade Anhanguera. Próximo a mercados, farmácias, restaurantes e bancos — tudo o que você precisa a poucos passos.</p>
+        <ul class="unit-features">
+          <li>Totalmente mobiliado</li>
+          <li>Wi-Fi alta velocidade</li>
+          <li>Ar-condicionado</li>
+          <li>Cozinha equipada com cooktop e geladeira</li>
+          <li>Roupa de cama e banho inclusa</li>
+          <li>TV</li>
+          <li>Lavanderia Compartilhada</li>
+        </ul>
+          <div class="unit-price-row">
+            <div>
+              <div class="price-from">Aluguel mensal a partir de</div>
+              <div class="price-val">R$ 1.900</div>
+              <div class="price-period">por mês</div>
+            </div>
+          </div>
+          <div class="unit-btns">
+            <a href="#reservar" class="btn-reserve" data-reserve-panel="0">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Reservar
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Rua+Jerusal%C3%A9m+58+Jardim+Riva+Primavera+do+Leste+MT" target="_blank" rel="noopener" class="btn-map">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              Ver no mapa
+            </a>
+          </div>
+
+      </div><!-- /unit-content-col -->
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================
+     LOFT 2 — Rua Jerusalém, 1252
+===================== -->
+<section id="loft-1252" class="unit-section unit-section--alt">
+  <div class="units-inner">
+    <div class="unit-row reverse" data-reveal>
+      <div class="unit-carousel-col">
+        <div class="carousel" id="c2">
+          <div class="carousel-track">
+            <img src="fotos/Studio%201252/01.jpeg" alt="Loft Rua Jerusalém 1252 — foto 1">
+            <img src="fotos/Studio%201252/02.jpeg" alt="Loft Rua Jerusalém 1252 — foto 2" loading="lazy">
+            <img src="fotos/Studio%201252/03.jpeg" alt="Loft Rua Jerusalém 1252 — foto 3" loading="lazy">
+            <img src="fotos/Studio%201252/04.jpeg" alt="Loft Rua Jerusalém 1252 — foto 4" loading="lazy">
+            <img src="fotos/Studio%201252/05.jpeg" alt="Loft Rua Jerusalém 1252 — foto 5" loading="lazy">
+          </div>
+          <button class="carr-expand" aria-label="Ampliar foto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+          </button>
+          <div class="carr-counter"><span class="carr-cur">1</span> / <span class="carr-total"></span></div>
+          <button class="carr-btn carr-prev" aria-label="Anterior">&#8249;</button>
+          <button class="carr-btn carr-next" aria-label="Próxima">&#8250;</button>
+          <div class="carr-dots">
+            <span class="cdot active"></span><span class="cdot"></span><span class="cdot"></span><span class="cdot"></span><span class="cdot"></span>
+          </div>
+        </div>
+      </div><!-- /unit-carousel-col -->
+      <div class="unit-content-col">
+        <span class="unit-badge">Jardim Riva</span>
+        <h3 class="unit-heading">Loft · Rua Jerusalém, 1252</h3>
+        <p class="unit-addr">Rua Jerusalém, 1252 · Jardim Riva · Primavera do Leste, MT</p>
+        <p class="unit-desc">Também no Jardim Riva, bairro tranquilo com fácil acesso ao centro. Próximo à Faculdade Anhanguera, mercados, restaurantes e toda a estrutura que você precisa no dia a dia.</p>
+        <ul class="unit-features">
+          <li>Totalmente mobiliado</li>
+          <li>Wi-Fi alta velocidade</li>
+          <li>Ar-condicionado</li>
+          <li>Cozinha equipada com cooktop e geladeira</li>
+          <li>Roupa de cama e banho inclusa</li>
+          <li>TV</li>
+          <li>Lavanderia Compartilhada</li>
+        </ul>
+          <div class="unit-price-row">
+            <div>
+              <div class="price-from">Aluguel mensal a partir de</div>
+              <div class="price-val">R$ 2.200</div>
+              <div class="price-period">por mês</div>
+            </div>
+          </div>
+          <div class="unit-btns">
+            <a href="#reservar" class="btn-reserve" data-reserve-panel="1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Reservar
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Rua+Jerusal%C3%A9m+1252+Jardim+Riva+Primavera+do+Leste+MT" target="_blank" rel="noopener" class="btn-map">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              Ver no mapa
+            </a>
+          </div>
+
+      </div><!-- /unit-content-col -->
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================
+     LOFT 3 — Av. dos Lagos, 796
+===================== -->
+<section id="loft-796" class="unit-section">
+  <div class="units-inner">
+    <div class="unit-row" data-reveal>
+      <div class="unit-carousel-col">
+        <div class="carousel" id="c3">
+          <div class="carousel-track">
+            <img src="fotos/Studio%20796/01.jpeg" alt="Loft Av. dos Lagos 796 — foto 1">
+            <img src="fotos/Studio%20796/02.jpeg" alt="Loft Av. dos Lagos 796 — foto 2" loading="lazy">
+            <img src="fotos/Studio%20796/03.jpeg" alt="Loft Av. dos Lagos 796 — foto 3" loading="lazy">
+            <img src="fotos/Studio%20796/04.jpeg" alt="Loft Av. dos Lagos 796 — foto 4" loading="lazy">
+            <img src="fotos/Studio%20796/05.jpeg" alt="Loft Av. dos Lagos 796 — foto 5" loading="lazy">
+            <img src="fotos/Studio%20796/06.jpeg" alt="Loft Av. dos Lagos 796 — foto 6" loading="lazy">
+          </div>
+          <button class="carr-expand" aria-label="Ampliar foto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+          </button>
+          <div class="carr-counter"><span class="carr-cur">1</span> / <span class="carr-total"></span></div>
+          <button class="carr-btn carr-prev" aria-label="Anterior">&#8249;</button>
+          <button class="carr-btn carr-next" aria-label="Próxima">&#8250;</button>
+          <div class="carr-dots">
+            <span class="cdot active"></span><span class="cdot"></span><span class="cdot"></span><span class="cdot"></span><span class="cdot"></span><span class="cdot"></span>
+          </div>
+        </div>
+      </div><!-- /unit-carousel-col -->
+      <div class="unit-content-col">
+        <span class="unit-badge">Jardim Riva</span>
+        <h3 class="unit-heading">Loft · Av. dos Lagos, 796</h3>
+        <p class="unit-addr">Av. dos Lagos, 796 · Jardim Riva · Primavera do Leste, MT</p>
+        <p class="unit-desc">No Jardim Riva, bairro central e tranquilo de Primavera do Leste. Fácil acesso ao centro, supermercados, farmácias e restaurantes.</p>
+        <ul class="unit-features">
+          <li>Totalmente mobiliado</li>
+          <li>Wi-Fi alta velocidade</li>
+          <li>Ar-condicionado</li>
+          <li>Cozinha equipada com cooktop e geladeira</li>
+          <li>Roupa de cama e banho inclusa</li>
+          <li>TV</li>
+          <li>Lavanderia Compartilhada</li>
+        </ul>
+          <div class="unit-price-row">
+            <div>
+              <div class="price-from">Aluguel mensal a partir de</div>
+              <div class="price-val">R$ 3.000</div>
+              <div class="price-period">por mês</div>
+            </div>
+          </div>
+          <div class="unit-btns">
+            <a href="#reservar" class="btn-reserve" data-reserve-panel="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Reservar
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Avenida+dos+Lagos+796+Jardim+Riva+Primavera+do+Leste+MT" target="_blank" rel="noopener" class="btn-map">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              Ver no mapa
+            </a>
+          </div>
+
+      </div><!-- /unit-content-col -->
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================
+     O QUE ESTÁ INCLUSO
+===================== -->
+<section id="incluso" class="incluso">
+  <div class="incluso-inner">
+    <div class="incluso-header" data-reveal>
+      <span class="tag" style="color:rgba(192,120,64,0.9)">Em todos os lofts</span>
+      <h2>Tudo incluso no aluguel.</h2>
+      <p>Chegou com a mala — é só se instalar.</p>
+    </div>
+    <div class="incluso-grid">
+
+      <!-- Wi-Fi -->
+      <div class="incluso-item" data-reveal>
+        <div class="incluso-item-top">
+          <div class="incluso-icon">
+            <svg viewBox="0 0 24 24"><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1.2" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <span class="incluso-num">01</span>
+        </div>
+        <strong>Wi-Fi alta velocidade</strong>
+        <span>Internet rápida para trabalho e lazer</span>
+      </div>
+
+      <!-- Cozinha -->
+      <div class="incluso-item" data-reveal="d1">
+        <div class="incluso-item-top">
+          <div class="incluso-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h1v6"/></svg>
+          </div>
+          <span class="incluso-num">02</span>
+        </div>
+        <strong>Cozinha equipada</strong>
+        <span>Cooktop, geladeira e microondas</span>
+      </div>
+
+      <!-- Ar-condicionado -->
+      <div class="incluso-item" data-reveal>
+        <div class="incluso-item-top">
+          <div class="incluso-icon">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><path d="m20 7-8 5-8-5"/><path d="m20 17-8-5-8 5"/></svg>
+          </div>
+          <span class="incluso-num">03</span>
+        </div>
+        <strong>Ar-condicionado</strong>
+        <span>Ambiente fresco o ano todo</span>
+      </div>
+
+      <!-- Estacionamento -->
+      <div class="incluso-item" data-reveal="d1">
+        <div class="incluso-item-top">
+          <div class="incluso-icon">
+            <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <span class="incluso-num">04</span>
+        </div>
+        <strong>Estacionamento</strong>
+        <span>Vaga garantida para seu veículo</span>
+      </div>
+
+      <!-- Roupa de cama e banho -->
+      <div class="incluso-item" data-reveal>
+        <div class="incluso-item-top">
+          <div class="incluso-icon">
+            <svg viewBox="0 0 24 24"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+          </div>
+          <span class="incluso-num">05</span>
+        </div>
+        <strong>Roupa de cama e banho</strong>
+        <span>Lençóis, fronhas e toalhas inclusos</span>
+      </div>
+
+      <!-- Lavanderia -->
+      <div class="incluso-item" data-reveal="d1">
+        <div class="incluso-item-top">
+          <div class="incluso-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="12" cy="13" r="5"/><path d="M7 5h4"/><circle cx="17" cy="5" r="1" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <span class="incluso-num">06</span>
+        </div>
+        <strong>Lavanderia livre</strong>
+        <span>Máquina de lavar em todas as unidades</span>
+      </div>
+
+      <!-- Mobília -->
+      <div class="incluso-item" data-reveal>
+        <div class="incluso-item-top">
+          <div class="incluso-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 9V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2"/><path d="M2 11v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H6v-2a2 2 0 0 0-4 0Z"/><path d="M4 18v2"/><path d="M20 18v2"/></svg>
+          </div>
+          <span class="incluso-num">07</span>
+        </div>
+        <strong>Mobília completa</strong>
+        <span>Sofá, mesa, armário — pronto pra morar</span>
+      </div>
+
+      <!-- Sem burocracia -->
+      <div class="incluso-item" data-reveal="d1">
+        <div class="incluso-item-top">
+          <div class="incluso-icon">
+            <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <span class="incluso-num">08</span>
+        </div>
+        <strong>Sem burocracia</strong>
+        <span>Processo rápido direto pelo WhatsApp</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================
+     ONDE FICAMOS
+===================== -->
+<section id="localizacao" class="localizacao">
+  <div class="localizacao-inner">
+
+    <div class="localizacao-header" data-reveal>
+      <span class="localizacao-tag">Onde ficamos</span>
+      <h2>Jardim Riva, Primavera do Leste.</h2>
+      <p class="localizacao-desc">Bairros centrais e tranquilos, a poucos minutos de supermercados, farmácias, restaurantes e bancos.</p>
+    </div>
+
+    <div class="prop-maps-grid" data-reveal="d1">
+      <div data-prop-map
+        data-name="Loft 58 - Jardim Riva"
+        data-address="Rua Jerusalém, 58, Jardim Riva, Primavera do Leste, MT"
+        data-query="Rua Jerusalém, 58, Jardim Riva, Primavera do Leste, MT, Brasil">
+      </div>
+      <div data-prop-map
+        data-name="Loft 1252 - Jardim Riva"
+        data-address="Rua Jerusalém, 1252, Jardim Riva, Primavera do Leste, MT"
+        data-query="Rua Jerusalém, 1252, Jardim Riva, Primavera do Leste, MT, Brasil">
+      </div>
+      <div data-prop-map
+        data-name="Loft 796 - Jardim Riva"
+        data-address="Av. dos Lagos, 796, Jardim Riva, Primavera do Leste, MT"
+        data-query="Avenida dos Lagos, 796, Jardim Riva, Primavera do Leste, MT, Brasil">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =====================
+     RESERVAR
+===================== -->
+<section id="reservar" class="reservar">
+  <div class="reservar-inner">
+
+    <div class="reservar-header" data-reveal>
+      <span class="units-tag">Disponibilidade</span>
+      <h2>Reserve seu loft.</h2>
+    </div>
+
+    <div class="res-tabs" data-reveal>
+      <button class="res-tab active" data-panel="0">Loft 58</button>
+      <button class="res-tab" data-panel="1">Loft 1252</button>
+      <button class="res-tab" data-panel="2">Loft 796</button>
+    </div>
+
+    <!-- Panel 0: Loft 58 -->
+    <div class="res-panel active" data-panel-id="0">
+      <div class="res-price-row">
+        <span class="res-price-val">R$ 1.900</span>
+        <span class="res-price-per">/ mês</span>
+      </div>
+      <div class="res-form-grid">
+        <div class="res-form-field">
+          <label>CHECK-IN</label>
+          <input type="date" class="res-checkin">
+        </div>
+        <div class="res-form-field">
+          <label>CHECK-OUT</label>
+          <input type="date" class="res-checkout">
+        </div>
+        <div class="res-form-field res-guests">
+          <label>HÓSPEDES</label>
+          <select class="res-guests-sel">
+            <option value="1 hóspede">1 hóspede</option>
+            <option value="2 hóspedes">2 hóspedes</option>
+          </select>
+        </div>
+      </div>
+      <div class="res-btns">
+        <button class="res-btn-wa" data-loft="Loft · Rua Jerusalém, 58" type="button">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.845L0 24l6.302-1.513A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 01-5.002-1.372l-.357-.213-3.742.897.939-3.635-.233-.374A9.773 9.773 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+          Consultar pelo WhatsApp
+        </button>
+        <a href="https://www.airbnb.com.br/rooms/1221741916449834044" target="_blank" rel="noopener" class="res-btn-airbnb">
+          <img src="fotos/airbnb-logo.png" alt="Airbnb" class="airbnb-belo">
+          <span class="airbnb-btn-txt">
+            <span>Reservar no <strong>Airbnb</strong></span>
+            <span class="superhost-label">★ Superhost Verificado</span>
+          </span>
+        </a>
+      </div>
+      <div class="res-or-divider"><span>ou</span></div>
+      <div class="res-monthly">
+        <div class="res-monthly-label">Aluguel mensal</div>
+        <div class="res-monthly-price">R$ 1.900<span> / mês</span></div>
+        <a href="https://wa.me/5566996358412?text=Olá!%20Tenho%20interesse%20no%20aluguel%20mensal%20do%20Loft%20Rua%20Jerusalém%2C%2058.%20Pode%20me%20passar%20mais%20informações%3F" target="_blank" rel="noopener" class="res-btn-monthly">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.845L0 24l6.302-1.513A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 01-5.002-1.372l-.357-.213-3.742.897.939-3.635-.233-.374A9.773 9.773 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+          Consultar disponibilidade mensal
+        </a>
+      </div>
+    </div>
+
+    <!-- Panel 1: Loft 1252 -->
+    <div class="res-panel" data-panel-id="1">
+      <div class="res-price-row">
+        <span class="res-price-val">R$ 2.200</span>
+        <span class="res-price-per">/ mês</span>
+      </div>
+      <div class="res-form-grid">
+        <div class="res-form-field">
+          <label>CHECK-IN</label>
+          <input type="date" class="res-checkin">
+        </div>
+        <div class="res-form-field">
+          <label>CHECK-OUT</label>
+          <input type="date" class="res-checkout">
+        </div>
+        <div class="res-form-field res-guests">
+          <label>HÓSPEDES</label>
+          <select class="res-guests-sel">
+            <option value="1 hóspede">1 hóspede</option>
+            <option value="2 hóspedes">2 hóspedes</option>
+          </select>
+        </div>
+      </div>
+      <div class="res-btns">
+        <button class="res-btn-wa" data-loft="Loft · Rua Jerusalém, 1252" type="button">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.845L0 24l6.302-1.513A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 01-5.002-1.372l-.357-.213-3.742.897.939-3.635-.233-.374A9.773 9.773 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+          Consultar pelo WhatsApp
+        </button>
+        <a href="https://www.airbnb.com.br/rooms/1221741916449834044" target="_blank" rel="noopener" class="res-btn-airbnb">
+          <img src="fotos/airbnb-logo.png" alt="Airbnb" class="airbnb-belo">
+          <span class="airbnb-btn-txt">
+            <span>Reservar no <strong>Airbnb</strong></span>
+            <span class="superhost-label">★ Superhost Verificado</span>
+          </span>
+        </a>
+      </div>
+      <div class="res-or-divider"><span>ou</span></div>
+      <div class="res-monthly">
+        <div class="res-monthly-label">Aluguel mensal</div>
+        <div class="res-monthly-price">R$ 2.200<span> / mês</span></div>
+        <a href="https://wa.me/5566996358412?text=Olá!%20Tenho%20interesse%20no%20aluguel%20mensal%20do%20Loft%20Rua%20Jerusalém%2C%201252.%20Pode%20me%20passar%20mais%20informações%3F" target="_blank" rel="noopener" class="res-btn-monthly">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.845L0 24l6.302-1.513A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 01-5.002-1.372l-.357-.213-3.742.897.939-3.635-.233-.374A9.773 9.773 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+          Consultar disponibilidade mensal
+        </a>
+      </div>
+    </div>
+
+    <!-- Panel 2: Loft 796 -->
+    <div class="res-panel" data-panel-id="2">
+      <div class="res-price-row">
+        <span class="res-price-val">R$ 3.000</span>
+        <span class="res-price-per">/ mês</span>
+      </div>
+      <div class="res-form-grid">
+        <div class="res-form-field">
+          <label>CHECK-IN</label>
+          <input type="date" class="res-checkin">
+        </div>
+        <div class="res-form-field">
+          <label>CHECK-OUT</label>
+          <input type="date" class="res-checkout">
+        </div>
+        <div class="res-form-field res-guests">
+          <label>HÓSPEDES</label>
+          <select class="res-guests-sel">
+            <option value="1 hóspede">1 hóspede</option>
+            <option value="2 hóspedes">2 hóspedes</option>
+          </select>
+        </div>
+      </div>
+      <div class="res-btns">
+        <button class="res-btn-wa" data-loft="Loft · Av. dos Lagos, 796" type="button">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.845L0 24l6.302-1.513A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 01-5.002-1.372l-.357-.213-3.742.897.939-3.635-.233-.374A9.773 9.773 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+          Consultar pelo WhatsApp
+        </button>
+        <a href="https://www.airbnb.com.br/rooms/1221741916449834044" target="_blank" rel="noopener" class="res-btn-airbnb">
+          <img src="fotos/airbnb-logo.png" alt="Airbnb" class="airbnb-belo">
+          <span class="airbnb-btn-txt">
+            <span>Reservar no <strong>Airbnb</strong></span>
+            <span class="superhost-label">★ Superhost Verificado</span>
+          </span>
+        </a>
+      </div>
+      <div class="res-or-divider"><span>ou</span></div>
+      <div class="res-monthly">
+        <div class="res-monthly-label">Aluguel mensal</div>
+        <div class="res-monthly-price">R$ 3.000<span> / mês</span></div>
+        <a href="https://wa.me/5566996358412?text=Olá!%20Tenho%20interesse%20no%20aluguel%20mensal%20do%20Loft%20Av.%20dos%20Lagos%2C%20796.%20Pode%20me%20passar%20mais%20informações%3F" target="_blank" rel="noopener" class="res-btn-monthly">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.845L0 24l6.302-1.513A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 01-5.002-1.372l-.357-.213-3.742.897.939-3.635-.233-.374A9.773 9.773 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+          Consultar disponibilidade mensal
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =====================
+     AVALIAÇÕES
+===================== -->
+<section class="reviews">
+  <div class="reviews-inner">
+    <div class="reviews-top" data-reveal>
+      <div class="reviews-tag">Avaliações</div>
+      <h2 class="reviews-title">O que dizem <em>de nós.</em></h2>
+      <div class="reviews-summary">
+        <!-- Google G colorido -->
+        <svg class="reviews-summary-g" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+          <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+          <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+          <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+        </svg>
+        <span class="reviews-summary-score">5,0</span>
+        <div class="reviews-summary-stars">
+          <span class="reviews-summary-star">★</span>
+          <span class="reviews-summary-star">★</span>
+          <span class="reviews-summary-star">★</span>
+          <span class="reviews-summary-star">★</span>
+          <span class="reviews-summary-star">★</span>
+        </div>
+        <span class="reviews-summary-meta">3 avaliações</span>
+        <span class="reviews-summary-verified">
+          <svg viewBox="0 0 20 20" fill="none" width="14" height="14"><circle cx="10" cy="10" r="10" fill="#1a73e8"/><path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Verificado pelo Google
+        </span>
+      </div>
+    </div>
+
+    <div class="reviews-grid" data-reveal="d1">
+
+      <!-- Review 1 — Vanessa Nascimento -->
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-user">
+            <div class="review-avatar" style="background: linear-gradient(135deg, var(--copper) 0%, var(--maroon) 100%);">V</div>
+            <div>
+              <div class="review-name">Vanessa Nascimento</div>
+              <div class="review-user-meta">Local Guide · 20 avaliações</div>
+            </div>
+          </div>
+          <svg class="review-glogo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+          </svg>
+        </div>
+        <div class="review-rating">
+          <div class="review-stars">
+            <span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span>
+          </div>
+          <span class="review-date">9 meses atrás</span>
+        </div>
+        <p class="review-text">Excelente localização, ambientes bem equipados, amei a minha estadia!</p>
+        <div class="review-footer">
+          <span class="review-verified">
+            <svg viewBox="0 0 20 20" fill="none" width="13" height="13"><circle cx="10" cy="10" r="10" fill="#1a73e8"/><path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Verificado
+          </span>
+          <a href="https://www.google.com/maps/search/?api=1&query=Studio+Loft+Primavera+Primavera+do+Leste+MT" target="_blank" rel="noopener" class="review-google-link">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+            Ver no Google →
+          </a>
+        </div>
+      </div>
+
+      <!-- Review 2 — Jean Fiorante -->
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-user">
+            <div class="review-avatar" style="background: linear-gradient(135deg, var(--maroon) 0%, #6B1515 100%);">J</div>
+            <div>
+              <div class="review-name">Jean Fiorante</div>
+              <div class="review-user-meta">15 avaliações</div>
+            </div>
+          </div>
+          <svg class="review-glogo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+          </svg>
+        </div>
+        <div class="review-rating">
+          <div class="review-stars">
+            <span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span>
+          </div>
+          <span class="review-date">9 meses atrás</span>
+        </div>
+        <p class="review-text">Sensacional! Voltarei mais vezes</p>
+        <div class="review-footer">
+          <span class="review-verified">
+            <svg viewBox="0 0 20 20" fill="none" width="13" height="13"><circle cx="10" cy="10" r="10" fill="#1a73e8"/><path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Verificado
+          </span>
+          <a href="https://www.google.com/maps/search/?api=1&query=Studio+Loft+Primavera+Primavera+do+Leste+MT" target="_blank" rel="noopener" class="review-google-link">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+            Ver no Google →
+          </a>
+        </div>
+      </div>
+
+      <!-- Review 3 — Graziela Pais -->
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-user">
+            <div class="review-avatar" style="background: linear-gradient(135deg, #C07840 0%, #8B4513 100%);">G</div>
+            <div>
+              <div class="review-name">Graziela Pais Avaliador Google</div>
+              <div class="review-user-meta">Local Guide · 92 avaliações · 153 fotos</div>
+            </div>
+          </div>
+          <svg class="review-glogo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+          </svg>
+        </div>
+        <div class="review-rating">
+          <div class="review-stars">
+            <span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span><span class="review-star">★</span>
+          </div>
+          <span class="review-date">2 anos atrás</span>
+        </div>
+        <p class="review-text">Apartamentos em condições de novos para quem quer encontrar um lugar para ficar por motivos de trabalho ou deseja morar sozinho(a) e já deseja encontrar uma estrutura pronta como Lavanderia e após já mobiliados. Bairro muito agradável e perto do comércio e de restaurantes 👍</p>
+        <div class="review-footer">
+          <span class="review-verified">
+            <svg viewBox="0 0 20 20" fill="none" width="13" height="13"><circle cx="10" cy="10" r="10" fill="#1a73e8"/><path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Verificado
+          </span>
+          <a href="https://www.google.com/maps/search/?api=1&query=Studio+Loft+Primavera+Primavera+do+Leste+MT" target="_blank" rel="noopener" class="review-google-link">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+            Ver no Google →
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /reviews-grid -->
+
+    <div class="reviews-cta-wrap" data-reveal="d2">
+      <a href="https://www.google.com/search?q=studio+loft+primavera+do+leste#lrd=0x937725c6ff109f85:0xcef2570269cde2eb,3,,,," target="_blank" rel="noopener" class="btn-review-google">
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+          <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+          <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+          <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+        </svg>
+        Deixar minha avaliação
+      </a>
+    </div>
+
+  </div><!-- /reviews-inner -->
+</section>
+
+<!-- =====================
+     CTA FINAL
+===================== -->
+<section class="cta-section">
+  <div class="cta-inner" data-reveal>
+    <span class="tag">Pronto pra se instalar?</span>
+    <h2>Fale com a gente agora.</h2>
+    <p>Verifique disponibilidade e valores direto pelo WhatsApp — rápido e sem enrolação.</p>
+    <a href="https://wa.me/5566996358412?text=Olá!%20Vi%20o%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20lofts%20disponíveis." target="_blank" rel="noopener" class="btn-wa-lg">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.845L0 24l6.302-1.513A11.928 11.928 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 01-5.002-1.372l-.357-.213-3.742.897.939-3.635-.233-.374A9.773 9.773 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+      Verificar disponibilidade
+    </a>
+    <a href="https://instagram.com/studioloftprimavera" target="_blank" rel="noopener" class="btn-instagram">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+      </svg>
+      Acompanhe as novidades
+    </a>
+  </div>
+</section>
+
+
+<!-- =====================
+     FOOTER
+===================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Studio Loft Primavera</div>
+    <div class="footer-slogan">Sua casa fora de casa</div>
+    <div class="footer-links">
+      <a href="#lofts">Unidades</a>
+      <a href="#localizacao">Localização</a>
+      <a href="#reservar">Reservar</a>
+      <a href="https://instagram.com/studioloftprimavera" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/5566996358412" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <div class="footer-copy">© 2026 Studio Loft Primavera · Primavera do Leste, MT</div>
+  </div>
+</footer>
+
+
+
+
+<!-- =====================
+     BOTTOM NAV (mobile)
+===================== -->
+<nav class="mobile-nav" aria-label="Navegação mobile">
+  <a href="#lofts" class="mob-nav-item active" data-section="lofts">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+      <polyline points="9 22 9 12 15 12 15 22"/>
+    </svg>
+    Unidades
+  </a>
+  <a href="#incluso" class="mob-nav-item" data-section="incluso">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="12" y1="8" x2="12" y2="12"/>
+      <line x1="12" y1="16" x2="12.01" y2="16"/>
+    </svg>
+    Informações
+  </a>
+  <a href="#localizacao" class="mob-nav-item" data-section="localizacao">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+      <circle cx="12" cy="9" r="2.5"/>
+    </svg>
+    Localização
+  </a>
+  <a href="#reservar" class="mob-nav-item" data-section="reservar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+      <line x1="16" y1="2" x2="16" y2="6"/>
+      <line x1="8" y1="2" x2="8" y2="6"/>
+      <line x1="3" y1="10" x2="21" y2="10"/>
+    </svg>
+    Reservar
+  </a>
+</nav>
+
+
+<!-- =====================
+     LIGHTBOX
+===================== -->
+<div id="lightbox" class="lightbox">
+  <button class="lb-close" aria-label="Fechar">&times;</button>
+  <button class="lb-arrow lb-prev" aria-label="Anterior">&#8249;</button>
+  <img class="lb-img" src="" alt="Foto do loft">
+  <button class="lb-arrow lb-next" aria-label="Próxima">&#8250;</button>
+  <div class="lb-count"><span class="lb-cur">1</span> / <span class="lb-tot">1</span></div>
+</div>
+
+
+<!-- =====================
+     CAROUSEL JS
+===================== -->
+<script>
+  /* ===== CAROUSEL ===== */
+  class Carousel {
+    constructor(el) {
+      this.el      = el;
+      this.track   = el.querySelector('.carousel-track');
+      this.imgs    = el.querySelectorAll('.carousel-track img');
+      this.dots    = el.querySelectorAll('.cdot');
+      this.total   = this.imgs.length;
+      this.cur     = 0;
+      this.startX  = 0;
+      this.dragging = false;
+      this.curEl   = el.querySelector('.carr-cur');
+      this.totEl   = el.querySelector('.carr-total');
+      if (this.totEl) this.totEl.textContent = this.total;
+
+      this.track.addEventListener('touchstart', e => {
+        this.startX = e.touches[0].clientX; this.dragging = true;
+      }, { passive: true });
+      this.track.addEventListener('touchend', e => {
+        if (!this.dragging) return;
+        const dx = e.changedTouches[0].clientX - this.startX;
+        if (Math.abs(dx) > 40) dx < 0 ? this.next() : this.prev();
+        this.dragging = false;
+      }, { passive: true });
+
+      el.querySelector('.carr-next').addEventListener('click', () => this.next());
+      el.querySelector('.carr-prev').addEventListener('click', () => this.prev());
+      this.dots.forEach((d, i) => d.addEventListener('click', () => this.goTo(i)));
+
+      const expandBtn = el.querySelector('.carr-expand');
+      if (expandBtn) {
+        expandBtn.addEventListener('click', () => {
+          openLightbox(Array.from(this.imgs).map(img => img.src), this.cur);
+        });
+      }
+    }
+
+    goTo(i) {
+      this.cur = ((i % this.total) + this.total) % this.total;
+      this.track.style.transform = `translateX(-${this.cur * 100}%)`;
+      this.dots.forEach((d, j) => d.classList.toggle('active', j === this.cur));
+      if (this.curEl) this.curEl.textContent = this.cur + 1;
+    }
+
+    next() { this.goTo(this.cur + 1); }
+    prev() { this.goTo(this.cur - 1); }
+  }
+
+  document.querySelectorAll('.carousel').forEach(el => new Carousel(el));
+
+  /* ===== LIGHTBOX ===== */
+  let lbImgs = [], lbIdx = 0, lbStartX = 0;
+  const lb    = document.getElementById('lightbox');
+  const lbImg = lb.querySelector('.lb-img');
+  const lbCur = lb.querySelector('.lb-cur');
+  const lbTot = lb.querySelector('.lb-tot');
+
+  function openLightbox(srcs, idx) {
+    lbImgs = srcs;
+    lbShow(idx);
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function lbShow(i) {
+    lbIdx = ((i % lbImgs.length) + lbImgs.length) % lbImgs.length;
+    lbImg.src = lbImgs[lbIdx];
+    lbCur.textContent = lbIdx + 1;
+    lbTot.textContent = lbImgs.length;
+  }
+
+  lb.querySelector('.lb-close').addEventListener('click', closeLightbox);
+  lb.querySelector('.lb-prev').addEventListener('click', () => lbShow(lbIdx - 1));
+  lb.querySelector('.lb-next').addEventListener('click', () => lbShow(lbIdx + 1));
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+
+  lb.addEventListener('touchstart', e => { lbStartX = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - lbStartX;
+    if (Math.abs(dx) > 50) lbShow(dx < 0 ? lbIdx + 1 : lbIdx - 1);
+  }, { passive: true });
+
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'ArrowRight') lbShow(lbIdx + 1);
+    if (e.key === 'ArrowLeft')  lbShow(lbIdx - 1);
+    if (e.key === 'Escape')     closeLightbox();
+  });
+
+  /* ===== PropertyLocationMap component ===== */
+  class PropertyLocationMap {
+    constructor({ propertyName, address, mapQuery }) {
+      this.propertyName = propertyName;
+      this.address = address;
+      this.mapQuery = mapQuery;
+    }
+    get embedUrl() {
+      return 'https://maps.google.com/maps?q=' + encodeURIComponent(this.mapQuery) + '&output=embed&zoom=16';
+    }
+    get mapsUrl() {
+      return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(this.mapQuery);
+    }
+    render() {
+      return '<div class="prop-map-card">' +
+        '<div class="prop-map-info">' +
+          '<div class="prop-map-texts">' +
+            '<span class="prop-map-name">' + this.propertyName + '</span>' +
+            '<span class="prop-map-addr">' + this.address + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="prop-map-frame-wrap">' +
+          '<iframe src="' + this.embedUrl + '" class="prop-map-iframe" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa — ' + this.propertyName + '"></iframe>' +
+        '</div>' +
+      '</div>';
+    }
+    mount(el) { el.innerHTML = this.render(); return this; }
+    static initAll() {
+      document.querySelectorAll('[data-prop-map]').forEach(el => {
+        new PropertyLocationMap({
+          propertyName: el.dataset.name,
+          address: el.dataset.address,
+          mapQuery: el.dataset.query
+        }).mount(el);
+      });
+    }
+  }
+
+  PropertyLocationMap.initAll();
+
+  /* ===== PARALLAX HERO ===== */
+  const heroBg = document.querySelector('.hero-bg');
+  if (heroBg) {
+    window.addEventListener('scroll', () => {
+      heroBg.style.transform = `translateY(${window.scrollY * 0.38}px)`;
+    }, { passive: true });
+  }
+
+  /* ===== SCROLL REVEAL ===== */
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if (revealEls.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => io.observe(el));
+  }
+
+  /* ===== BOTTOM NAV ACTIVE STATE ===== */
+  (function () {
+    const mobItems = document.querySelectorAll('.mob-nav-item');
+    if (!mobItems.length) return;
+    const sections = ['lofts', 'loft-58', 'loft-1252', 'loft-796', 'incluso', 'localizacao', 'reservar'];
+    const sectionEls = sections.map(id => document.getElementById(id)).filter(Boolean);
+    const navMap = { 'lofts': 'lofts', 'loft-58': 'lofts', 'loft-1252': 'lofts', 'loft-796': 'lofts', 'incluso': 'incluso', 'localizacao': 'localizacao', 'reservar': 'reservar' };
+    function setActive(key) {
+      mobItems.forEach(item => {
+        item.classList.toggle('active', item.dataset.section === key);
+      });
+    }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) setActive(navMap[entry.target.id] || 'lofts');
+      });
+    }, { threshold: 0.3 });
+    sectionEls.forEach(el => observer.observe(el));
+    mobItems.forEach(item => {
+      item.addEventListener('click', () => setActive(item.dataset.section));
+    });
+  })();
+
+  /* ===== BOTÕES RESERVAR NOS LOFTS ===== */
+  document.querySelectorAll('.btn-reserve').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const panel = btn.dataset.reservePanel;
+      const tab = document.querySelector(`.res-tab[data-panel="${panel}"]`);
+      if (tab) tab.click();
+    });
+  });
+
+  /* ===== RESERVAR TABS ===== */
+  const resTabs   = document.querySelectorAll('.res-tab');
+  const resPanels = document.querySelectorAll('.res-panel');
+  resTabs.forEach(tab => {
+    tab.addEventListener('click', function () {
+      const target = this.dataset.panel;
+      resTabs.forEach(t => t.classList.remove('active'));
+      resPanels.forEach(p => p.classList.remove('active'));
+      this.classList.add('active');
+      document.querySelector(`.res-panel[data-panel-id="${target}"]`).classList.add('active');
+    });
+  });
+
+  /* ===== RESERVAR WA BUTTON ===== */
+  document.querySelectorAll('.res-btn-wa').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const panel   = this.closest('.res-panel');
+      const loft    = this.dataset.loft;
+      const checkin  = panel.querySelector('.res-checkin').value;
+      const checkout = panel.querySelector('.res-checkout').value;
+      const guests   = panel.querySelector('.res-guests-sel').value;
+      const fmt = s => { const [y,m,d] = s.split('-'); return `${d}/${m}/${y}`; };
+      let msg;
+      if (checkin && checkout) {
+        msg = `Olá! Gostaria de verificar disponibilidade do ${loft}:\nCheck-in: ${fmt(checkin)}\nCheck-out: ${fmt(checkout)}\nHóspedes: ${guests}\n\nQual o valor para esse período?`;
+      } else {
+        msg = `Olá! Gostaria de saber mais sobre o ${loft}. Pode me ajudar?`;
+      }
+      window.open(`https://wa.me/5566996358412?text=${encodeURIComponent(msg)}`, '_blank');
+    });
+  });
+</script>
+
+</body>
+</html>
